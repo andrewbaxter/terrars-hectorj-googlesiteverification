@@ -1,2 +1,2 @@
-pub mod gcp;
-pub use gcp::*;
+pub mod google_site_verification;
+pub use google_site_verification::*;
