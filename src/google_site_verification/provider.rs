@@ -1,7 +1,9 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 
 #[derive(Serialize)]
-struct ProviderGooglesiteverificationData {
+struct ProviderGooglesiteverificationData_ {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alias: std::option::Option<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -9,7 +11,7 @@ struct ProviderGooglesiteverificationData {
 }
 
 struct ProviderGooglesiteverification_ {
-    data: std::cell::RefCell<ProviderGooglesiteverificationData>,
+    data: std::cell::RefCell<ProviderGooglesiteverificationData_>,
 }
 
 pub struct ProviderGooglesiteverification(std::rc::Rc<ProviderGooglesiteverification_>);
@@ -62,7 +64,7 @@ impl BuildProviderGooglesiteverification {
             ProviderGooglesiteverification(
                 std::rc::Rc::new(
                     ProviderGooglesiteverification_ {
-                        data: std::cell::RefCell::new(ProviderGooglesiteverificationData {
+                        data: std::cell::RefCell::new(ProviderGooglesiteverificationData_ {
                             alias: std::option::Option::None,
                             credentials: core::default::Default::default(),
                         }),

@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderGooglesiteverification;
 
 #[derive(Serialize)]
-struct DnsData {
+struct DnsData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -23,13 +25,13 @@ struct DnsData {
     id: std::option::Option<terrars::PrimField<std::string::String>>,
     token: terrars::PrimField<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    timeouts: std::option::Option<DnsTimeoutsEl>,
+    timeouts: std::option::Option<Dns_Timeouts>,
 }
 
 struct Dns_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<DnsData>,
+    data: std::cell::RefCell<DnsData_>,
 }
 
 #[derive(Clone)]
@@ -136,7 +138,7 @@ impl Dns {
     }
 
     #[doc = "Set the field `timeouts`.\n"]
-    pub fn set_timeouts(self, v: impl std::convert::Into<DnsTimeoutsEl>) -> Self {
+    pub fn set_timeouts(self, v: impl std::convert::Into<Dns_Timeouts>) -> Self {
         self.0.data.borrow_mut().timeouts = std::option::Option::Some(v.into());
         self
     }
@@ -158,8 +160,8 @@ impl Dns {
     }
 
     #[doc = "Get a reference to the value of field `timeouts` after provisioning.\n"]
-    pub fn timeouts(&self) -> DnsTimeoutsElRef {
-        DnsTimeoutsElRef::new(self.shared().clone(), format!("{}.timeouts", self.extract_ref()))
+    pub fn timeouts(&self) -> Dns_TimeoutsRef {
+        Dns_TimeoutsRef::new(self.shared().clone(), format!("{}.timeouts", self.extract_ref()))
     }
 }
 
@@ -208,7 +210,7 @@ impl BuildDns {
         let out = Dns(std::rc::Rc::new(Dns_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(DnsData {
+            data: std::cell::RefCell::new(DnsData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -265,18 +267,18 @@ impl DnsRef {
     }
 
     #[doc = "Get a reference to the value of field `timeouts` after provisioning.\n"]
-    pub fn timeouts(&self) -> DnsTimeoutsElRef {
-        DnsTimeoutsElRef::new(self.shared().clone(), format!("{}.timeouts", self.extract_ref()))
+    pub fn timeouts(&self) -> Dns_TimeoutsRef {
+        Dns_TimeoutsRef::new(self.shared().clone(), format!("{}.timeouts", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct DnsTimeoutsEl {
+pub struct Dns_Timeouts {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     create: std::option::Option<terrars::PrimField<std::string::String>>,
 }
 
-impl DnsTimeoutsEl {
+impl Dns_Timeouts {
     #[doc = "Set the field `create`.\n"]
     pub fn set_create(mut self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.create = std::option::Option::Some(v.into());
@@ -284,8 +286,8 @@ impl DnsTimeoutsEl {
     }
 }
 
-impl terrars::ToListMappable for DnsTimeoutsEl {
-    type O = terrars::BlockAssignable<DnsTimeoutsEl>;
+impl terrars::ToListMappable for Dns_Timeouts {
+    type O = terrars::BlockAssignable<Dns_Timeouts>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -296,29 +298,31 @@ impl terrars::ToListMappable for DnsTimeoutsEl {
     }
 }
 
-pub struct BuildDnsTimeoutsEl {}
+pub struct BuildDns_Timeouts {}
 
-impl BuildDnsTimeoutsEl {
-    pub fn build(self) -> DnsTimeoutsEl {
-        DnsTimeoutsEl { create: core::default::Default::default() }
+impl BuildDns_Timeouts {
+    pub fn build(self) -> Dns_Timeouts {
+        Dns_Timeouts { create: core::default::Default::default() }
     }
 }
 
-pub struct DnsTimeoutsElRef {
+#[allow(dead_code)]
+pub struct Dns_TimeoutsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for DnsTimeoutsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> DnsTimeoutsElRef {
-        DnsTimeoutsElRef {
+impl terrars::Ref for Dns_TimeoutsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Dns_TimeoutsRef {
+        Dns_TimeoutsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl DnsTimeoutsElRef {
+impl Dns_TimeoutsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
